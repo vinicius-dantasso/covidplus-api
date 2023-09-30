@@ -1,13 +1,16 @@
 package br.edu.ufersa.covidplus.domain.entities;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "user")
@@ -25,8 +28,16 @@ public class User {
     private String senha;
     @Column(nullable = false)
     private LocalDate nascimento;
-    @Column(nullable = false)
+    @Column(nullable = true , unique = true)
     private String crm;
+
+    @Transient
+    @OneToMany(mappedBy = "medico")
+    private List<Consulta> consultasMedico;
+
+    @Transient
+    @OneToMany(mappedBy = "paciente")
+    private List<Consulta> consultasPaciente;
 
     public long getId() {
         return this.id;
@@ -82,6 +93,22 @@ public class User {
 
     public void setCrm(String crm) {
         this.crm = crm;
+    }
+
+    public List<Consulta> getConsultasMedico() {
+        return this.consultasMedico;
+    }
+
+    public void setConsultasMedico(List<Consulta> consultasMedico) {
+        this.consultasMedico = consultasMedico;
+    }
+
+    public List<Consulta> getConsultasPaciente() {
+        return this.consultasPaciente;
+    }
+
+    public void setConsultasPaciente(List<Consulta> consultasPaciente) {
+        this.consultasPaciente = consultasPaciente;
     }
 
 }
