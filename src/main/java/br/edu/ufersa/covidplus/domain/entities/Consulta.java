@@ -1,5 +1,7 @@
 package br.edu.ufersa.covidplus.domain.entities;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,7 +19,7 @@ public class Consulta {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
     @Column(nullable = false)
-    private String horario;
+    private LocalDateTime dataHorario;
     @Column(nullable = false)
     private String local;
     
@@ -44,12 +46,12 @@ public class Consulta {
         this.id = id;
     }
 
-    public String getHorario() {
-        return this.horario;
+    public LocalDateTime getDataHorario() {
+        return this.dataHorario;
     }
 
-    public void setHorario(String horario) {
-        this.horario = horario;
+    public void setDataHorario(LocalDateTime dataHorario) {
+        this.dataHorario = dataHorario;
     }
 
     public String getLocal() {

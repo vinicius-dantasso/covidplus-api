@@ -1,21 +1,27 @@
 package br.edu.ufersa.covidplus.api.dto;
 
+import java.time.LocalDateTime;
+
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class CreateConsultaDto {
-    @NotBlank
-    private String horario;
     @NotBlank
     private String local;
     @NotBlank
     private String cpfMedico;
+    @NotNull
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
+    private LocalDateTime dataHorario;
 
-    public String getHorario() {
-        return this.horario;
+    public LocalDateTime getDataHorario() {
+        return this.dataHorario;
     }
 
-    public void setHorario(String horario) {
-        this.horario = horario;
+    public void setDataHorario(LocalDateTime dataHorario) {
+        this.dataHorario = dataHorario;
     }
 
     public String getLocal() {

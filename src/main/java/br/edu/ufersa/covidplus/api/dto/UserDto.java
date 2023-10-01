@@ -4,7 +4,6 @@ import java.time.LocalDate;
 
 public class UserDto {
     private String email;
-    private String senha;
     private String nome;
     private String cpf;
     private String crm;
@@ -16,14 +15,6 @@ public class UserDto {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getSenha() {
-        return this.senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
     }
 
     public String getNome() {

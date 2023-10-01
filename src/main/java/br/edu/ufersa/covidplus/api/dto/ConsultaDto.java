@@ -1,19 +1,28 @@
 package br.edu.ufersa.covidplus.api.dto;
 
-import br.edu.ufersa.covidplus.domain.entities.User;
+import java.time.LocalDateTime;
 
 public class ConsultaDto {
-    private String horario;
+    private long id;
+    private LocalDateTime dataHorario;
     private String local;
-    private User medico;
-    private User paciente;
+    private UserDto medico;
+    private UserDto paciente;
 
-    public String getHorario() {
-        return this.horario;
+    public long getId() {
+        return this.id;
     }
 
-    public void setHorario(String horario) {
-        this.horario = horario;
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public LocalDateTime getDataHorario() {
+        return this.dataHorario;
+    }
+
+    public void setDataHorario(LocalDateTime dataHorario) {
+        this.dataHorario = dataHorario;
     }
 
     public String getLocal() {
@@ -24,19 +33,19 @@ public class ConsultaDto {
         this.local = local;
     }
 
-    public User getMedico() {
+    public UserDto getMedico() {
         return this.medico;
     }
 
-    public void setMedico(User medico) {
+    public void setMedico(UserDto medico) {
         this.medico = medico;
     }
 
-    public User getPaciente() {
+    public UserDto getPaciente() {
         return this.paciente;
     }
 
-    public void setPaciente(User paciente) {
+    public void setPaciente(UserDto paciente) {
         this.paciente = paciente;
     }
 

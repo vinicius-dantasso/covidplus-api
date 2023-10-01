@@ -32,4 +32,23 @@ public class ConsultaService {
         rep.save(consulta);
         return consulta;
     }
+
+    public Consulta marcarConsulta(Consulta consulta) {
+        Consulta dataConsul = rep.findById(consulta.getId());
+        User paciente = userService.getByCpf(consulta.getCpfPaciente());
+        dataConsul.setPaciente(paciente);
+        rep.save(dataConsul);
+        return dataConsul;
+    }
+
+    public String deleteConsulta(long id){
+        Consulta consulta = rep.findById(id);
+
+        if(consulta != null) {
+            consulta.setPaciente(null);
+            rep.save(consulta);
+            return "ok";
+        }
+        return "Consulta não encontrada";
+    }
 }
