@@ -73,4 +73,13 @@ public class ConsultaController {
 
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
+    @GetMapping("/{cpfMedico}")
+    public List<ConsultaDto> getByCpfMedico(@PathVariable String cpfMedico){
+        List<ConsultaDto> consultasDTO = new ArrayList<ConsultaDto>();
+      for(Consulta consulta: service.getByCpfMedico(cpfMedico)){
+            consultasDTO.add(mapper.map(consulta,ConsultaDto.class));
+      }
+      return consultasDTO;
+    }
 }

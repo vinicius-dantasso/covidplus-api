@@ -21,10 +21,6 @@ public class ConsultaService {
         return consultas;
     }
 
-    public Consulta getByMedico(User medico){
-        Consulta consulta = rep.findByMedico(medico);
-        return consulta;
-    }
 
     public Consulta createConsulta(Consulta consulta){
         User medico = userService.getByCpf(consulta.getCpfMedico());
@@ -51,4 +47,12 @@ public class ConsultaService {
         }
         return "Consulta não encontrada";
     }
+
+    public List<Consulta> getByCpfMedico(String cpfMedico){
+        User medico = userService.getByCpf(cpfMedico);
+        List<Consulta> consultas = rep.findByMedico(medico);
+        return consultas;
+    }
+
+    
 }
